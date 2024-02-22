@@ -4,10 +4,11 @@ import qs from 'query-string';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { cn, extractUnique } from '@/lib/utils';
+import { DataType } from '@/types';
 
 interface FilterProps {
-  data: (Size | Color)[];
+  data: string[];
   name: string;
   valueKey: string;
 }
@@ -42,20 +43,22 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
   };
 
   return (
-    <div className='mb-8'>
-      <h3 className='text-lg font-semibold'>{name}</h3>
-      <hr className='my-4' />
+    <div className='my-2'>
+      <h3 className='font-semibold'>{name}</h3>
       <div className='flex flex-wrap gap-2'>
         {data.map((filter) => (
           <div
-            key={filter.id}
+            key={filter}
             className='flex items-center'
           >
             <Button
-              className={cn('rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300', selectedValue === filter.id && 'bg-black text-white')}
-              onClick={() => onClick(filter.id)}
+              className={cn(
+                'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300 hover:bg-gray-200',
+                selectedValue === filter && 'bg-black text-white hover:bg-gray-800'
+              )}
+              onClick={() => onClick(filter)}
             >
-              {filter.name}
+              {filter}
             </Button>
           </div>
         ))}
