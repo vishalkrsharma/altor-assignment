@@ -6,6 +6,7 @@ import Charts from './components/charts';
 import { extractUnique, fetchData, pieChartData } from '@/lib/utils';
 import { getTableData } from '@/actions/get-table-data';
 import Filter from './components/filter';
+import { DataType } from '@/types';
 
 const RootPage = async ({
   searchParams,
@@ -26,7 +27,7 @@ const RootPage = async ({
   const uniqueVehicleCC = extractUnique(data, 'vehicle_cc');
   const uniqueSdkInt = extractUnique(data, 'sdk_int');
 
-  const tableData = await getTableData({
+  const tableData: DataType[] = await getTableData({
     zone: searchParams?.zone,
     device_brand: searchParams?.device_brand,
     vehicle_brand: searchParams?.vehicle_brand,
@@ -34,7 +35,7 @@ const RootPage = async ({
     sdk_int: searchParams?.sdk_int,
   });
 
-  const formattedData: DataColumn[] = data.map((item: DataColumn) => ({
+  const formattedData: DataColumn[] = tableData.map((item: DataColumn) => ({
     username: item.username,
     zone: item.zone,
     device_brand: item.device_brand,
@@ -76,13 +77,13 @@ const RootPage = async ({
             name='sdk_int'
             data={uniqueSdkInt}
           />
+          <DownloadButton data={tableData} />
         </div>
         <div className='w-3/4'>
-          <Table data={tableData} />
+          <Table data={formattedData} />
         </div>
       </div>
       <Separator className='mb-4' />
-      <DownloadButton data={data} />
       <Charts data={zoneCountArray} />
     </div>
   );

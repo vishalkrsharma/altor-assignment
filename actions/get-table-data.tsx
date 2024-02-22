@@ -1,4 +1,4 @@
-import { DataColumn } from '@/app/(root)/components/columns';
+import { DataType } from '@/types';
 import qs from 'query-string';
 
 const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/data`;
@@ -11,7 +11,7 @@ interface Query {
   sdk_int?: number;
 }
 
-export const getTableData = async (query: Query): Promise<DataColumn[]> => {
+export const getTableData = async (query: Query): Promise<DataType[]> => {
   const url = qs.stringifyUrl({
     url: URL,
     query: {
