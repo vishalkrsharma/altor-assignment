@@ -4,8 +4,7 @@ import qs from 'query-string';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
-import { cn, extractUnique } from '@/lib/utils';
-import { DataType } from '@/types';
+import { cn } from '@/lib/utils';
 
 interface FilterProps {
   data: string[];
@@ -19,7 +18,7 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
 
   const selectedValue = searchParams.get(valueKey);
 
-  const onClick = (id: string) => {
+  const onClick = (id: string | number) => {
     const current = qs.parse(searchParams.toString());
 
     const query = {

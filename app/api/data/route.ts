@@ -9,8 +9,6 @@ export async function GET(req: Request) {
   const vehicle_cc = searchParams.get('vehicle_cc') || undefined;
   const sdk_int = searchParams.get('sdk_int') || undefined;
 
-  console.log(zone);
-
   let sdk_int_num = sdk_int ? parseInt(sdk_int) : undefined;
 
   try {

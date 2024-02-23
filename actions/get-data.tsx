@@ -11,7 +11,7 @@ interface Query {
   sdk_int?: number;
 }
 
-export const getTableData = async (query: Query): Promise<DataType[]> => {
+export const getData = async (query: Query): Promise<DataType[]> => {
   const url = qs.stringifyUrl({
     url: URL,
     query: {
@@ -25,7 +25,6 @@ export const getTableData = async (query: Query): Promise<DataType[]> => {
 
   const res = await fetch(url);
   const data = res.json();
-  console.log(data);
 
   return data;
 };

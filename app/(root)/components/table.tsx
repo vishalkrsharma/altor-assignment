@@ -1,4 +1,5 @@
-import { DataColumn, columns } from './columns';
+import { DataColumn } from '@/types';
+import { columns } from './columns';
 import { DataTable } from '@/components/ui/data-table';
 
 const Table = ({ data }: { data: DataColumn[] }) => {

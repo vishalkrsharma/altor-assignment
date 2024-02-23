@@ -1,15 +1,7 @@
 'use client';
 
+import { DataColumn } from '@/types';
 import { ColumnDef } from '@tanstack/react-table';
-
-export type DataColumn = {
-  device_brand: string;
-  sdk_int: number;
-  username: string;
-  vehicle_brand: string;
-  vehicle_cc: string;
-  zone: string;
-};
 
 export const columns: ColumnDef<DataColumn>[] = [
   {
