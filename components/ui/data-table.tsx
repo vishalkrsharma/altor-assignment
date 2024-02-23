@@ -28,7 +28,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
 
   return (
     <div>
-      <div className='flex items-center py-4'>
+      <div className='flex items-center py-4 w-full mx-auto'>
         <Input
           placeholder='Filter username...'
           value={(table.getColumn('username')?.getFilterValue() as string) ?? ''}

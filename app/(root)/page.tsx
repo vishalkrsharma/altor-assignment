@@ -8,6 +8,11 @@ import BarChartComponent from './components/bar-chart-component';
 import Header from './components/header';
 import StackBarChartComponent from './components/stack-bar-chart-component';
 import FilterComponent from './components/filter-component';
+import { getUniqueZone } from '@/actions/get-unique-zone';
+import { getUniqueDeviceBrand } from '@/actions/get-unique-device_brand';
+import { getUniqueVehicleBrand } from '@/actions/get-unique-vehicle_brand';
+import { getUniqueVehicleCC } from '@/actions/get-unique-vehicle_cc';
+import { getUniqueSdkInt } from '@/actions/get-unique-sdk_int';
 
 const RootPage = async ({
   searchParams,
@@ -37,6 +42,12 @@ const RootPage = async ({
     vehicle_cc: item.vehicle_cc,
   }));
 
+  const uniqueZones = await getUniqueZone();
+  const uniqueDeviceBrands = await getUniqueDeviceBrand();
+  const uniqueVehicleBrands = await getUniqueVehicleBrand();
+  const uniqueVehicleCC = await getUniqueVehicleCC();
+  const uniqueSdkInt = await getUniqueSdkInt();
+
   const zoneCountArray = pieChartData(data);
   const stackdata = generateStackChartData(formattedData);
   let device_brandArray;
@@ -54,56 +65,72 @@ const RootPage = async ({
 
   return (
     <div className='px-4 max-h-screen overflow-hidden relative'>
-      <Header />
+      <Header
+        data={data}
+        uniqueZones={uniqueZones}
+        uniqueDeviceBrands={uniqueDeviceBrands}
+        uniqueVehicleBrands={uniqueVehicleBrands}
+        uniqueVehicleCC={uniqueVehicleCC}
+        uniqueSdkInt={uniqueSdkInt}
+      />
       <Separator className='mt-14' />
-      <div className='flex space-x-4'>
-        <FilterComponent data={data} />
-        <div className='w-3/4 max-h-screen overflow-y-auto pb-14'>
+      <div className='flex lg:space-x-4'>
+        <FilterComponent
+          data={data}
+          uniqueZones={uniqueZones}
+          uniqueDeviceBrands={uniqueDeviceBrands}
+          uniqueVehicleBrands={uniqueVehicleBrands}
+          uniqueVehicleCC={uniqueVehicleCC}
+          uniqueSdkInt={uniqueSdkInt}
+        />
+        <div className='w-4/5 max-h-screen overflow-y-auto pb-14 mx-auto'>
           <Table data={formattedData} />
           <Separator />
           {Object.keys(searchParams).length === 0 && (
             <div className='text-center pb-4'>
               <div className='text-xl font-medium text-center my-4'>Charts on all zones</div>
-              <div className='flex justify-evenly items-center'>
-                <div className='border rounded-md p-2'>
+              <div className='2xl:flex justify-evenly items-center flex-wrap max-2xl:inline-block'>
+                <div className='border rounded-md p-2 flex justify-center items-center'>
                   <PieChartComponent data={zoneCountArray} />
                 </div>
-                <div className='border rounded-md p-2'>
+                <div className='border rounded-md p-2 max-2xl:mt-4'>
                   <BarChartComponent data={zoneCountArray} />
+                </div>
+                <div className='border rounded-md p-2 mt-4'>
+                  <StackBarChartComponent data={stackdata} />
                 </div>
               </div>
             </div>
           )}
           {searchParams.zone && (
-            <div className='pb-4'>
+            <div className='pb-4 flex justify-center items-center flex-col'>
               <div className='text-xl font-medium text-center my-4'>Charts based on zone filters</div>
-              <div className='flex justify-evenly items-center text-center mb-4'>
+              <div className='2xl:flex justify-evenly items-center text-center mb-4 max-2xl:inline-block flex-wrap space-x-4'>
                 <div className='border rounded-md p-2'>
                   <div>Device Brand distribution over the zone(s)</div>
                   <PieChartComponent data={device_brandArray} />
                 </div>
-                <div className='border rounded-md p-2'>
+                <div className='border rounded-md p-2 max-2xl:mt-4'>
                   <div>Vehicle Brand distribution over the zone(s)</div>
                   <PieChartComponent data={vehicle_brandArray} />
                 </div>
-                <div className='border rounded-md p-2'>
+                <div className='border rounded-md p-2 max-2xl:mt-4'>
                   <div>Vehicle CC distribution over the zone(s)</div>
                   <PieChartComponent data={vehicle_ccArray} />
                 </div>
               </div>
-              <div className='flex justify-evenly items-center text-center'>
+              <div className='2xl:flex justify-evenly items-center text-center space-x-4 max-2xl:inline-block '>
                 <div className='border rounded-md p-2'>
                   <div>Vehicle distribution over vehicle brands based on zone(s)</div>
                   <BarChartComponent data={vehicleDistribution} />
                 </div>
-                <div className='border rounded-md p-2'>
+                <div className='border rounded-md p-2 max-3xl:space-y-4'>
                   <div>Devices distribution over handset SDK int values based on zone(s)</div>
                   <BarChartComponent data={sdkIntDistribution} />
                 </div>
               </div>
             </div>
           )}
-          <StackBarChartComponent data={stackdata} />
         </div>
       </div>
     </div>
