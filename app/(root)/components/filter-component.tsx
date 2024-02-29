@@ -16,7 +16,8 @@ interface FilterComponentProps {
 const FilterComponent = async ({ data, uniqueZones, uniqueDeviceBrands, uniqueVehicleBrands, uniqueVehicleCC, uniqueSdkInt }: FilterComponentProps) => {
   return (
     <>
-      <div className='w-1/5 border-r-[1px] hidden lg:block'>
+      <div className='w-1/5 border-r-[1px] hidden lg:block max-h-screen overflow-y-auto'>
+        <div className='text-xl font-medium mt-2'>Table filters</div>
         <Filter
           valueKey='zone'
           name='zone'
