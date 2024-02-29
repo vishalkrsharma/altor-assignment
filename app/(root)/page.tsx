@@ -63,6 +63,9 @@ const RootPage = async ({
     sdkIntDistribution = calculateSdkIntDistributionByZone(formattedData, searchParams.zone);
   }
 
+  console.log(stackdata);
+  console.log(zoneCountArray);
+
   return (
     <div className='px-4 max-h-screen overflow-hidden relative'>
       <Header

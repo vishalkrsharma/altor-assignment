@@ -18,7 +18,7 @@ export function pieChartData(data: DataType[]) {
   });
 
   const zoneCountArray = Object.entries(zoneCounts).map(([zone, count]) => ({
-    zone,
+    name: zone,
     value: count,
   }));
 
