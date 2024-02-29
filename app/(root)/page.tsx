@@ -86,7 +86,7 @@ const RootPage = async ({
           uniqueVehicleCC={uniqueVehicleCC}
           uniqueSdkInt={uniqueSdkInt}
         />
-        <div className='w-4/5 max-h-screen overflow-y-auto pb-14 mx-auto'>
+        <div className='w-4/5 max-h-screen overflow-y-auto pb-14 mx-auto max-lg:w-full'>
           <div className='text-xl font-medium mt-2'>Data Table</div>
           <Table data={formattedData} />
           <Separator />
