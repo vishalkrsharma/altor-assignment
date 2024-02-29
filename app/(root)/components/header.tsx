@@ -13,8 +13,8 @@ interface HeaderProps {
 
 const Header = ({ data, uniqueZones, uniqueDeviceBrands, uniqueVehicleBrands, uniqueVehicleCC, uniqueSdkInt }: HeaderProps) => {
   return (
-    <div className='font-medium text-4xl text-center py-2 fixed top-0 left-0 right-0 flex justify-center items-center'>
-      <div>Altor Assignment</div>
+    <div className='lg:text-center py-2 max-lg:py-3 fixed top-0 left-0 right-0 flex justify-center max-lg:justify-start items-center'>
+      <div className='font-medium text-4xl max-lg:text-2xl flex justify-center items-center max-lg:ml-4'>Altor Assignment</div>
       <MobileFilterComponent
         data={data}
         uniqueZones={uniqueZones}

@@ -9,6 +9,7 @@ This project fetches data from the Altor API and renders it in a dashboard which
   - [Technologies Used](#technologies-used)
   - [APIs](#apis)
   - [Installation](#installation)
+  - [Screenshots](#screenshots)
 
 ## Technologies Used
 
@@ -57,3 +58,16 @@ To get started with Altor Assignment, follow these steps:
    ```
 
 The development server should now be accessible at http://localhost:3000.
+
+## Screenshots
+
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-28-19.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-28-26.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-28-31.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-28-39.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-28-47.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-28-54.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-31-00.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-31-03.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-31-06.png)
+![Alt text](/assets/screenshots/Screenshot%20from%202024-02-29%2020-31-09.png)
