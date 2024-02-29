@@ -2,6 +2,8 @@
 
 This project fetches data from the Altor API and renders it in a dashboard which consists of tables and charts.
 
+Drive Link(for screenshots and videos) : https://drive.google.com/drive/folders/1nvQK-ZTXjN0USHQWyDN8dF0Sh7K-7nJ2
+
 ## Table of Contents
 
 - [altor-assignment](#altor-assignment)
